@@ -36,7 +36,6 @@ def sez_imen_let(dat):
         seznam.append(maliSez)
     return seznam
     
-print(sez_imen_let('igraLeto.txt'))
 
 ##def vstaviVigro(vhodna,izhodna):
 ##    izpis = "INSERT INTO igra (ime,leto, uporabnik, zaloznik, razvijalec) VALUES ("
@@ -55,8 +54,20 @@ print(sez_imen_let('igraLeto.txt'))
 ##        print(izpis, file=f)
 ##
 ##vstaviVigro('igraLeto.txt', 'igra.txt')
+
+igraZ = [['i1', 'z1'],['i2', 'z2']]
+
+def vstaviZvrst(igraZvrst):
+    '''vstavi v sql pare iger in zvrsti'''
+    cur = con.cursor()
+    for el in igraZvrst:       
+        cur.execute('INSERT into zvrst_igra VALUES (?,?)', el)
+    con.commit()
+            
+vstaviZvrst(igraZ)
         
-        
+    
+    
         
         
     
