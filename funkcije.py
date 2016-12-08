@@ -25,12 +25,15 @@ def seznam_uporabnikov():
         uporabniki.append(up_ime)
     return uporabniki
 
-def sez_imen_let(vhodna):
-    dat = open(vhodna)
+
+def sez_imen_let(dat):
+    '''iz dat prebere imena in leta, vrne seznam seznamov dolžine 2'''
+    beri = open(dat)
     seznam = []
-    for vrstica in dat:
-        pod = vrstica.split(',')
-        seznam.append(pod)
+    for vrstica in beri:
+        maliSez = vrstica.split(',')
+        maliSez[1] = int(maliSez[1].strip('\n'))
+        seznam.append(maliSez)
     return seznam
     
 print(sez_imen_let('igraLeto.txt'))
