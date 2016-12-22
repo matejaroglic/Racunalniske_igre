@@ -96,6 +96,35 @@ def komentarjiIgre(igra):
          WHERE igra.ime = ?'''
     return list(con.execute(sql, [igra]))
 
+
+def seznamPoizvedba(beseda):
+    vzorec = '%{}%'.format(beseda)
+    sql ='''SELECT DISTINCT igra.ime
+  FROM igra
+       JOIN
+       platforma_igra ON igra.id = platforma_igra.igra
+       JOIN
+       platforma ON platforma_igra.platformA = platforma.id
+       JOIN
+       podjetja AS zalozniki ON zalozniki.id = igra.zaloznik
+       JOIN
+       podjetja AS razvijalci ON razvijalci.id = igra.razvijalec
+       JOIN
+       uporabnik ON uporabnik.id = igra.uporabnik
+       JOIN
+       zvrst_igra ON igra.id = zvrst_igra.igra
+       JOIN
+       zvrst ON zvrst_igra.zvrst = zvrst.id
+ WHERE (igra.ime LIKE ?) OR 
+       (platforma.katera LIKE ?) OR 
+       (razvijalci.ime LIKE ?) OR 
+       (zalozniki.ime LIKE ?) OR 
+       (uporabnik.up_ime LIKE ?) OR 
+       (zvrst.ime LIKE ?);'''
+    return list(con.execute(sql),[vzorec],[vzorec],[vzorec],[vzorec],[vzorec],[vzorec])
+
+
+
 ##a = komentarjiIgre("Fallout")
 ##print(a[0]["komentar"])
 ##print(dict(a[0]))
