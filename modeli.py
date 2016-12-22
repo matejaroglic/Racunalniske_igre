@@ -164,9 +164,9 @@ def igraZvrsti(igra):
 
 #print(igraPlatforme("The Witcher 3: Wild Hunt"))
 
-def podatkiOigri(igra):
-    '''vrne ime, leto, uporabnik, založnik in razvijalec igre'''
-    sql = ''''''
-	return
+##def podatkiOigri(igra):
+##    '''vrne ime, leto, uporabnik, založnik in razvijalec igre'''
+##    sql = ''''''
+##	return
 
 
