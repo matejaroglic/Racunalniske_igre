@@ -68,7 +68,7 @@ def topDeset():
         top.append((igra, ocena))
     return top
 
-#print(topDeset())
+print(topDeset())
     
 def IsciZBesedo(beseda):
     '''vrne vse igre, ki v imenu vsebujejo besedo'''
@@ -124,7 +124,6 @@ def seznamPoizvedba(beseda):
     return list(con.execute(sql),[vzorec],[vzorec],[vzorec],[vzorec],[vzorec],[vzorec])
 
 
-
 ##a = komentarjiIgre("Fallout")
 ##print(a[0]["komentar"])
 ##print(dict(a[0]))
@@ -167,6 +166,6 @@ def igraZvrsti(igra):
 def podatkiOigri(igra):
     '''vrne ime, leto, uporabnik, založnik in razvijalec igre'''
     sql = ''''''
-	return
+    return
 
 
