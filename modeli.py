@@ -70,12 +70,13 @@ def topDeset():
 
 #print(topDeset())
     
-def igreZBesedo(beseda):
+def IsciZBesedo(beseda):
     '''vrne vse igre, ki v imenu vsebujejo besedo'''
-    sql = '''SELECT ime
+    vzorec = '%{}%'.format(beseda)
+    sql = '''SELECT igra.ime as ime
           FROM igra
-          WHERE ime LIKE "%{}%"'''.format(beseda)
-    return list(con.execute(sql))
+          WHERE ime LIKE ?"'''
+    return list(con.execute(sql, [vzorec]))
 
 ##print(igreZBesedo("As"))
 ##b= igreZBesedo("As")
@@ -98,5 +99,44 @@ def komentarjiIgre(igra):
 ##a = komentarjiIgre("Fallout")
 ##print(a[0]["komentar"])
 ##print(dict(a[0]))
+
+def zvrstiIgra(zvrst):
+    '''vrne igre zvrsti zvrst'''
+    sql = '''SELECT igra.ime AS igra
+          FROM igra
+               JOIN
+               zvrst_igra ON igra.id = zvrst_igra.igra
+               JOIN
+               zvrst ON zvrst_igra.zvrst = zvrst.id
+         WHERE zvrst.ime = ?'''
+    return list(con.execute(sql))
+    
+def igraPlatforme(igra):
+    '''vrne platforme igre igra'''
+    sql = '''SELECT platforma.katera
+          FROM platforma
+               JOIN
+               platforma_igra ON platforma.id = platforma_igra.platforma
+               JOIN
+               igra ON platforma_igra.igra = igra.id
+         WHERE igra.ime = ?'''
+    return list(con.execute(sql, [igra]))
+
+#execute vrne iterator
+def igraZvrsti(igra):
+    sql = '''SELECT zvrst.ime
+          FROM zvrst
+               JOIN
+               zvrst_igra ON zvrst.id = zvrst_igra.zvrst
+               JOIN
+               igra ON zvrst_igra.igra = igra.id
+         WHERE igra.ime = ?'''
+    return list(con.execute(sql, [igra]))
+
+#print(igraPlatforme("The Witcher 3: Wild Hunt"))
+
+def podatkiOigri(igra):
+    '''vrne ime, leto, uporabnik, založnik in razvijalec igre'''
+	return
 
 
