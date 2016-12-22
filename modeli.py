@@ -166,6 +166,7 @@ def igraZvrsti(igra):
 
 def podatkiOigri(igra):
     '''vrne ime, leto, uporabnik, založnik in razvijalec igre'''
+    sql = ''''''
 	return
 
 
