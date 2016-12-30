@@ -1,11 +1,11 @@
 from bottle import route, run, template, request, response
-import modeli
+from modeli import*
 
 @route('/')
 def domaca_stran():
     return template(
         'domaca_stran',
-        igre = modeli.topDeset()
+        igre = topDeset()
     )
 
 @route('/pomoc/')
