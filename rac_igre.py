@@ -5,7 +5,7 @@ import modeli
 def domaca_stran():
     return template(
         'domaca_stran',
-        igre = topDeset()
+        igre = modeli.topDeset()
     )
 
 @route('/pomoc/')
