@@ -55,7 +55,7 @@ def povprecna_ocena(igra):
     return con.execute(sql, [igra]).fetchone()["povp"]
 
 def topDeset():
-    sql = '''SELECT igra.ime,
+    sql = '''SELECT igra.id, igra.ime,
                avg(ocena.koliko) AS ocena
           FROM igra
                JOIN
@@ -63,10 +63,7 @@ def topDeset():
          GROUP BY igra.ime
          ORDER BY ocena DESC
          LIMIT 10'''
-    top = []
-    for (igra, ocena) in con.execute(sql):
-        top.append((igra, ocena))
-    return top
+    return list(con.execute(sql))
 
 print(topDeset())
     
@@ -167,7 +164,7 @@ def igraZvrsti(igra):
 def podatkiOigri(igra):
     '''vrne ime, leto, uporabnik, založnik in razvijalec igre'''
     sql = ''''''
-    return
+    return list(con.execute(sql, [igra]))
 
 ##def podatkiOigri(igra):
 ##    '''vrne ime, leto, uporabnik, založnik in razvijalec igre'''

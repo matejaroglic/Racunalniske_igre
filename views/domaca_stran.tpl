@@ -4,7 +4,9 @@
         <table class="highlight">
             <thead>
                 <tr>
-                    <th>Letnik</th>
+                    <th>
+					<a href="/login" class="waves-effect waves-light btn"> <i class="material-icons right">perm_identity</i>LOGIN </a>
+					</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,19 +24,15 @@
 			<tbody>
 			
 		%for igra in igre:
-			%niz = "".join(igra[0].split())
                 <tr>
                     <td>
-			 <a href="/{{niz}}/vec">
+			 <a href="/{{igra['id']}}/vec">
                        
-                        {{igra[0]}} 
+                        {{igra['ime']}} 
                         </a>
                     </td>
                 </tr>
-                %end					
-					
-                
-            
+                %end					      
                
             </tbody>
         </table>

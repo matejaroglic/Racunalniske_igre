@@ -8,7 +8,7 @@ def domaca_stran():
         igre = topDeset()
     )
 
-@route('/pomoc/')
+@route('/vec/')
 def pomoc():
     return 'Pojdi na stran...'
 
