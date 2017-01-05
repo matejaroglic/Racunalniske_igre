@@ -12,6 +12,15 @@ def domaca_stran():
 def pomoc():
     return 'Pojdi na stran...'
 
+@route('/igra/<id_igre:int>/')
+def vec_o_igri(id_igre):
+    return template(
+        'vec_o_igri',
+        #podatki =
+        komentarji = komentarjiIgre(id_igre)#dodal, komentar, datum
+
+    )
+
 ###iukaj dobimo up. ime trenutno prijavljenega uporabnika
 ##@route('/counter')
 ##def counter():

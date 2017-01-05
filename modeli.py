@@ -90,7 +90,7 @@ def komentarjiIgre(igra):
                igra ON komentar.igra = igra.id
                JOIN
                uporabnik ON komentar.uporabnik = uporabnik.id
-         WHERE igra.ime = ?'''
+         WHERE igra.id = ?'''
     return list(con.execute(sql, [igra]))
 
 

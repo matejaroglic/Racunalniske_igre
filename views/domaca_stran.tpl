@@ -26,7 +26,7 @@
 		%for igra in igre:
                 <tr>
                     <td>
-			 <a href="/{{igra['id']}}/vec">
+			 <a href="/igra/{{igra['id']}}/">
                        
                         {{igra['ime']}} 
                         </a>
