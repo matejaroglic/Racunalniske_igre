@@ -94,7 +94,7 @@ def komentarjiIgre(igra):
 def seznamPoizvedba(beseda):
     '''za iskanje iger, ki imajo v imenu ali drugih komponentah niz beseda''' 
     vzorec = '%{}%'.format(beseda)
-    sql ='''SELECT DISTINCT igra.ime
+    sql ='''SELECT DISTINCT igra.ime AS ime, igra.id AS id
   FROM igra
        JOIN
        platforma_igra ON igra.id = platforma_igra.igra
@@ -116,7 +116,7 @@ def seznamPoizvedba(beseda):
        (zalozniki.ime LIKE ?) OR 
        (uporabnik.up_ime LIKE ?) OR 
        (zvrst.ime LIKE ?);'''
-    return list(con.execute(sql),[vzorec],[vzorec],[vzorec],[vzorec],[vzorec],[vzorec])
+    return list(con.execute(sql,[vzorec, vzorec, vzorec, vzorec, vzorec, vzorec]))
 
 
 ##a = komentarjiIgre("Fallout")

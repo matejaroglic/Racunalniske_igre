@@ -29,9 +29,7 @@
         </div>
       </div>
 
- <div class="row">
-    <div class="col s12"><p>Komentarji</p></div> 
-  </div>
+
   
        <div class="row">
         <div class="col s12 m6">
@@ -49,7 +47,10 @@
         </div>
       </div>
 
-    
+  <div class="row">
+    <div class="col s12"><p>Komentarji</p></div> 
+  </div>
+	
 	%for komentar in komentarji:
  <div class="row">
 		<div class="col s12 m4 l2"><p>{{komentar['dodal']}}</p></div>

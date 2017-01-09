@@ -28,6 +28,14 @@ def vec_o_igri(id_igre):
 def dodajKomentar():
     return template(
         'dodajKomentar'
+        )
+
+@route('/iskanje/')
+def rezultati_iskanja():
+    return template(
+        'rezultati_iskanja',
+        rezultati = seznamPoizvedba(request.query.iskanje)
+        
     )
 ###iukaj dobimo up. ime trenutno prijavljenega uporabnika
 ##@route('/counter')
