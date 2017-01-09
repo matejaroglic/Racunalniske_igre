@@ -173,7 +173,7 @@ def podatkiOigri(igra):
        JOIN
        uporabnik ON igra.uporabnik = uporabnik.id
  WHERE igra.id = ?'''
-    return list(con.execute(sql, [igra]))
+    return con.execute(sql, [igra]).fetchone()
 
 def razvijalecIgra(igra):
     '''vrne  razvijalca igre'''
@@ -182,7 +182,7 @@ def razvijalecIgra(igra):
        JOIN
        igra ON igra.razvijalec = podjetja.id
  WHERE igra.id = ?'''
-    return list(con.execute(sql, [igra]))
+    return con.execute(sql, [igra]).fetchone()
 
 
 
