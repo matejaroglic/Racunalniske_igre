@@ -24,6 +24,12 @@ def vec_o_igri(id_igre):
 
     )
 
+@route('/dodajKomentar')
+def dodajKomentar():
+    return template(
+        'dodajKomentar'
+        )
+
 @route('/iskanje/')
 def rezultati_iskanja():
     return template(

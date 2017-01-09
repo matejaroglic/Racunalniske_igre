@@ -55,6 +55,7 @@ def povprecna_ocena(igra):
     return con.execute(sql, [igra]).fetchone()["povp"]
 
 def topDeset():
+    '''vrne prvih 10 iger z najboljšo povprečno oceno'''
     sql = '''SELECT igra.id, igra.ime,
                avg(ocena.koliko) AS ocena
           FROM igra
@@ -65,7 +66,7 @@ def topDeset():
          LIMIT 10'''
     return list(con.execute(sql))
 
-print(topDeset())
+#print(topDeset())
     
 def IsciZBesedo(beseda):
     '''vrne vse igre, ki v imenu vsebujejo besedo'''
@@ -74,10 +75,6 @@ def IsciZBesedo(beseda):
           FROM igra
           WHERE ime LIKE ?"'''
     return list(con.execute(sql, [vzorec]))
-
-##print(igreZBesedo("As"))
-##b= igreZBesedo("As")
-##print(dict(b[0]))
 
 def komentarjiIgre(igra):
     '''za igro vrne vse dodane komentarje, kdo je komentiral
@@ -95,6 +92,7 @@ def komentarjiIgre(igra):
 
 
 def seznamPoizvedba(beseda):
+    '''za iskanje iger, ki imajo v imenu ali drugih komponentah niz beseda''' 
     vzorec = '%{}%'.format(beseda)
     sql ='''SELECT DISTINCT igra.ime AS ime, igra.id AS id
   FROM igra
@@ -158,8 +156,6 @@ def igraZvrsti(igra):
          WHERE igra.id = ?'''
     return list(con.execute(sql, [igra]))
 
-#print(igraPlatforme("The Witcher 3: Wild Hunt"))
-
 
 def podatkiOigri(igra):
     '''vrne ime, leto, založnika, uporabnika igre'''
@@ -184,6 +180,8 @@ def razvijalecIgra(igra):
  WHERE igra.id = ?'''
     return con.execute(sql, [igra]).fetchone()
 
+
+###Dodajanje v bazo
 
 
 
