@@ -33,4 +33,4 @@ def vec_o_igri(id_igre):
 ##    return 'You visited this page %d times' % count
 
 
-run()
+run(debug=True)
