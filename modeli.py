@@ -181,8 +181,28 @@ def razvijalecIgra(igra):
     return con.execute(sql, [igra]).fetchone()
 
 
+def kodirajGeslo(geslo):
+    '''vrne zakodirano geslo'''
+    return hashlib.md5(geslo.encode()).hexdigest()
+
+def prijava(up_ime,geslo):
+    sql = '''
+        select geslo
+        from uporabnik
+        where up_ime = ?
+          and geslo = ?;
+          '''
+    return con.execute(sql, [up_ime, kodirajGeslo(geslo)]).fetchone()
+
 ###Dodajanje v bazo
 
-
+def dodaj_uporabnik(up_ime,geslo):
+    sql =   '''
+             insert into uporabnik
+             (up_ime,geslo)
+             values (?,?)
+            '''
+    con.execute(sql,[up_ime,kodirajGeslo(geslo)])
+    con.commit()
 
 
