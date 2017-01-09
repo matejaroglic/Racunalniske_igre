@@ -31,6 +31,14 @@ def rezultati_iskanja():
         rezultati = seznamPoizvedba(request.query.iskanje)
         
     )
+
+@route('/vse_igre')
+def vse_igre():
+    return template(
+        'vse_igre',
+        igre = sez_iger()
+        
+    )
 ###iukaj dobimo up. ime trenutno prijavljenega uporabnika
 ##@route('/counter')
 ##def counter():

@@ -20,7 +20,16 @@
 			<button class="waves-effect waves-light btn"><i class="material-icons right">search</i>Išči</button>
         </div>
       </div>
-            
+	  <br>
+	  <br>
+      <thead>
+                <tr>
+                    <th>
+					<button href="/vse_igre" class="waves-effect waves-light btn"> <i class="material-icons right">wiev_list</i>VSE IGRE</button>
+					</th>
+                </tr>
+      </thead>  
+	  
         </table>
     </div>
 	
