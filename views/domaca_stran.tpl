@@ -18,14 +18,16 @@
 			<input name="iskanje" type="text" class="validate">
 			<label for="iskanje">Vnesi:</label>
 			<button class="waves-effect waves-light btn"><i class="material-icons right">search</i>Išči</button>
+		  </form>
         </div>
+		
       </div>
 	  <br>
 	  <br>
       <thead>
                 <tr>
                     <th>
-					<button href="/vse_igre" class="waves-effect waves-light btn"> <i class="material-icons right">wiev_list</i>VSE IGRE</button>
+					<a href="/vse_igre" class="waves-effect waves-light btn"> <i class="material-icons right">view_list</i>VSE IGRE</a>
 					</th>
                 </tr>
       </thead>  
