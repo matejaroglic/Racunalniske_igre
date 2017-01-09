@@ -24,6 +24,11 @@ def vec_o_igri(id_igre):
 
     )
 
+@route('/dodajKomentar')
+def dodajKomentar():
+    return template(
+        'dodajKomentar'
+    )
 ###iukaj dobimo up. ime trenutno prijavljenega uporabnika
 ##@route('/counter')
 ##def counter():

@@ -30,8 +30,26 @@
       </div>
 
  <div class="row">
-    <div class="col s12"><p>Komentarji</p></div> <div class="right-align"><a class="waves-effect waves-light btn">Dodaj komentar</a></div>
+    <div class="col s12"><p>Komentarji</p></div> 
   </div>
+  
+       <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Komentiranje</span>
+              <p><label class="active" for="komentar">Napisi komentar</label>
+			  <input value="" id="komentar" type="text" class="validate">
+      </p>
+            </div>
+            <div class="card-action">
+              <a href="/dodajKomentar">Dodaj komentar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
 	%for komentar in komentarji:
  <div class="row">
 		<div class="col s12 m4 l2"><p>{{komentar['dodal']}}</p></div>
