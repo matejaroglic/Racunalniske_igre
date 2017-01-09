@@ -16,7 +16,10 @@ def pomoc():
 def vec_o_igri(id_igre):
     return template(
         'vec_o_igri',
-        #podatki =
+        podatki =podatkiOigri(id_igre),
+        razvijalec = razvijalecIgra(id_igre),
+        platforme=igraPlatforme(id_igre),
+        zvrsti=igraZvrsti(id_igre),
         komentarji = komentarjiIgre(id_igre)#dodal, komentar, datum
 
     )

@@ -138,38 +138,53 @@ def zvrstiIgra(zvrst):
     
 def igraPlatforme(igra):
     '''vrne platforme igre igra'''
-    sql = '''SELECT platforma.katera
+    sql = '''SELECT platforma.katera AS platforma
           FROM platforma
                JOIN
                platforma_igra ON platforma.id = platforma_igra.platforma
                JOIN
                igra ON platforma_igra.igra = igra.id
-         WHERE igra.ime = ?'''
+         WHERE igra.id = ?'''
     return list(con.execute(sql, [igra]))
 
 #execute vrne iterator
 def igraZvrsti(igra):
-    sql = '''SELECT zvrst.ime
+    sql = '''SELECT zvrst.ime AS zvrst
           FROM zvrst
                JOIN
                zvrst_igra ON zvrst.id = zvrst_igra.zvrst
                JOIN
                igra ON zvrst_igra.igra = igra.id
-         WHERE igra.ime = ?'''
+         WHERE igra.id = ?'''
     return list(con.execute(sql, [igra]))
 
 #print(igraPlatforme("The Witcher 3: Wild Hunt"))
 
 
 def podatkiOigri(igra):
-    '''vrne ime, leto, uporabnik, založnik in razvijalec igre'''
-    sql = ''''''
+    '''vrne ime, leto, založnika, uporabnika igre'''
+    sql = '''SELECT igra.ime AS ime,
+       igra.leto AS leto,
+       podjetja.ime AS zaloznik,
+       uporabnik.up_ime AS uporabnik
+  FROM igra
+       JOIN
+       podjetja ON igra.zaloznik = podjetja.id
+       JOIN
+       uporabnik ON igra.uporabnik = uporabnik.id
+ WHERE igra.id = ?'''
     return list(con.execute(sql, [igra]))
 
-##def podatkiOigri(igra):
-##    '''vrne ime, leto, uporabnik, založnik in razvijalec igre'''
-##    sql = ''''''
-##	return
+def razvijalecIgra(igra):
+    '''vrne  razvijalca igre'''
+    sql = '''SELECT podjetja.ime AS razvijalec
+  FROM podjetja
+       JOIN
+       igra ON igra.razvijalec = podjetja.id
+ WHERE igra.id = ?'''
+    return list(con.execute(sql, [igra]))
+
+
 
 
 
