@@ -5,14 +5,28 @@
 <div class="row">
     <div class="col s6">
         <table class="highlight">
-            <thead>
-                <tr>
-                    <th>
-					<a href="/login" class="waves-effect waves-light btn"> <i class="material-icons right">perm_identity</i>LOGIN </a>
-					</th>
-                </tr>
-            </thead>
+      <div class="row">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content text">
+			<i class="material-icons right">perm_identity</i> <span class="card-title">Log in</span>
+              <p><label class="active" for="up_ime">Uporabniško ime</label>
+			  <input value="" id="up_ime" type="text" class="validate">
+			  <label class="active" for="geslo">Geslo</label>
+			  <input value="" id="geslo" type="text" class="validate">
+			  
+      </p>
+            </div>
+            <div class="card-action">
+              <a href="#">VPIS</a>
+			  <a href="#">REGISTRACIJA</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
 			 <div class="row">
+		Išči igro po imenu, letu, uporabniku, založniku, razvijalcu, zvrsti ali platformi:
         <div class="input-field col s6">
 		  <form action="/iskanje/">
 			<input name="iskanje" type="text" class="validate">
