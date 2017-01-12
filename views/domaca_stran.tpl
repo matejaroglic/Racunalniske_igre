@@ -1,7 +1,5 @@
 % rebase('osnova.tpl')
 
-
-
 <div class="row">
     <div class="col s6">
         <table class="highlight">

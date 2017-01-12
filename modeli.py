@@ -3,6 +3,34 @@ import sqlite3
 con = sqlite3.connect('racunalniske_igre.db')
 con.row_factory = sqlite3.Row
 
+def koda_gesla(geslo):
+    geslo = hashlib.md5(geslo.encode()).hexdigest()
+    return geslo
+
+def dodaj_uporabnika(up_ime,geslo):
+    sql =   '''
+             insert into uporabnik
+             (up_ime,geslo)
+             values (?,?)
+            '''
+    con.execute(sql,[up_ime,koda_gesla(geslo)])
+    con.commit()
+
+
+
+def prijava(upIme, geslo):
+    sql = '''
+        select geslo
+        from uporabnik
+        where up_ime = ?
+          and geslo = ?;
+          '''
+    pravo = con.execute(sql, [up_ime, koda_gesla(geslo)]).fetchone()
+    #ce je none ali ne
+    return pravo
+
+
+
 def seznam_podjetij():
     sql = '''
     SELECT id, ime
