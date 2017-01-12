@@ -205,4 +205,10 @@ def dodaj_uporabnik(up_ime,geslo):
     con.execute(sql,[up_ime,kodirajGeslo(geslo)])
     con.commit()
 
+def dodaj_komentar(vsebina, uporabnik, igra):
+    sql = '''INSERT INTO komentar (vsebina, uporabnik, igra)
+           VALUES (?,?,?)'''
+    con.execute(sql, [vsebina, uporabnik, igra])
+    con.commit()
 
+dodaj_komentar("Great game", 23, 10)
