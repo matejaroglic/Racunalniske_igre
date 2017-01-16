@@ -1,11 +1,55 @@
-from bottle import route, run, template, request, response
-from modeli import*
+from bottle import route, run, template, request, response, post, redirect
+from bottlesession import session
+from modeli import *
+
+sess = session()
+sess.set("up_id", None)
+
+@post('/')
+def prijavarequest():
+    if request.forms.gumb == 'registracija':
+        pass#dodajuporabnika!
+    else:
+        up_ime = request.forms.up_ime
+        geslo = request.forms.geslo
+        print(up_ime, geslo)
+        up_id = prijava(up_ime, geslo)
+        if up_id is None:
+            redirect('/pomoc/')
+        else:
+            sess.set("up_id", up_id)
+            redirect('/')
+
+
+@route('/pomoc/')
+def pomoc():
+    return 'Narobe ste vnesli geslo.'
+
+@route('/dodaj_uporabnika/')
+def dodajuporabnika():
+    return template('dodaj_uporabnika')
+
+@post('/dodaj_uporabnika/')
+def dodajuporabnika():
+    up = request.forms.up_ime
+    pas = request.forms.geslo
+    if not aliVBazi(up):
+        dodaj_uporabnika(up,pas)
+        
+            
+    return redirect('/dodaj_uporabnika/')
+    
+##@route('/prijava/')
+##def prijava():
+##    return template('prijava')
+
 
 @route('/')
 def domaca_stran():
     return template(
         'domaca_stran',
-        igre = topDeset()
+        igre = topDeset(),
+        up_id = sess.read('up_id')
     )
 
 @route('/vec/')
@@ -30,6 +74,10 @@ def dodajKomentar():
         'dodajKomentar'
         )
 
+#@post('dodajKomentar')
+#def ...
+#    modeli.dodajKomentar(idIgre, vsebina, sess.read('up_id'))
+
 @route('/iskanje/')
 def rezultati_iskanja():
     return template(
@@ -45,13 +93,5 @@ def vse_igre():
         igre = sez_iger()
         
     )
-###iukaj dobimo up. ime trenutno prijavljenega uporabnika
-##@route('/counter')
-##def counter():
-##    count = int( request.cookies.get('counter', '0') )
-##    count += 1
-##    response.set_cookie('counter', str(count))
-##    return 'You visited this page %d times' % count
-
 
 run(debug=True)

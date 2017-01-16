@@ -5,6 +5,15 @@
           <div class="card blue-grey darken-2">
             <div class="card-content white-text">
               <span class="card-title">{{podatki['ime']}}</span>
+			  
+			<div class="right-align">
+			<html>
+			<body>
+			<img src="https://cdn2.iconfinder.com/data/icons/pack1-baco-flurry-icons-style/512/Game_Center.png" style="width:100px;height:100px;">
+			</body>
+			</html>
+			 </div>
+			  
               <p>
 			  Leto izdaje : {{podatki['leto']}} <br>
 			  Razvijalec: {{razvijalec['razvijalec']}} <br>

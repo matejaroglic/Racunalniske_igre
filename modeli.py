@@ -1,4 +1,5 @@
 import sqlite3
+import hashlib
 
 con = sqlite3.connect('racunalniske_igre.db')
 con.row_factory = sqlite3.Row
@@ -10,20 +11,12 @@ def seznam_podjetij():
     '''
     return list(con.execute(sql))
 
-##a = seznam_podjetij()
-##print(a[0]["ime"])
-##print(dict(a[0]))
-
 def seznam_uporabnikov():
     sql = '''
     SELECT id, up_ime, geslo
     FROM uporabnik  
           '''
     return list(con.execute(sql))
-
-b = seznam_uporabnikov()
-#print(b[]
-##print(dict(b[0]))
 
 def sez_iger():
     sql= '''
@@ -32,23 +25,13 @@ def sez_iger():
     '''
     return list(con.execute(sql))
 
-##c=sez_iger()
-##print(dict(c[0]))
-
 def seznam_platform():
     sql = '''SELECT id, katera FROM platforma '''
     return list(con.execute(sql))
 
-d=seznam_platform()
-##print(dict(d))
-##print(dict(d[0]))
-
 def seznam_zvrsti():
     sql = '''SELECT id, ime FROM zvrst'''
     return list(con.execute(sql))
-
-##e =seznam_zvrsti()
-##print(dict(e[0]))
 
 def povprecna_ocena(igra):
     sql = '''SELECT AVG(koliko) AS povp FROM ocena WHERE igra = ?'''
@@ -66,7 +49,6 @@ def topDeset():
          LIMIT 10'''
     return list(con.execute(sql))
 
-#print(topDeset())
     
 def IsciZBesedo(beseda):
     '''vrne vse igre, ki v imenu vsebujejo besedo'''
@@ -117,11 +99,6 @@ def seznamPoizvedba(beseda):
        (uporabnik.up_ime LIKE ?) OR 
        (zvrst.ime LIKE ?);'''
     return list(con.execute(sql,[vzorec, vzorec, vzorec, vzorec, vzorec, vzorec]))
-
-
-##a = komentarjiIgre("Fallout")
-##print(a[0]["komentar"])
-##print(dict(a[0]))
 
 def zvrstiIgra(zvrst):
     '''vrne igre zvrsti zvrst'''
@@ -181,28 +158,43 @@ def razvijalecIgra(igra):
     return con.execute(sql, [igra]).fetchone()
 
 
+##Od tu naprej
 def kodirajGeslo(geslo):
     '''vrne zakodirano geslo'''
     return hashlib.md5(geslo.encode()).hexdigest()
 
 def prijava(up_ime,geslo):
     sql = '''
-        select geslo
+        select id
         from uporabnik
         where up_ime = ?
           and geslo = ?;
           '''
-    return con.execute(sql, [up_ime, kodirajGeslo(geslo)]).fetchone()
+    oseba = con.execute(sql, [up_ime, kodirajGeslo(geslo)]).fetchone()
+    if oseba:
+        return oseba['id']
+    
+def aliVBazi(up_ime):
+    sql = '''select up_ime from uporabnik
+    where up_ime == ?'''
+    if con.execute(sql, [up_ime]).fetchone():
+        return True
+    return False
 
 ###Dodajanje v bazo
 
 def dodaj_uporabnik(up_ime,geslo):
-    sql =   '''
-             insert into uporabnik
-             (up_ime,geslo)
-             values (?,?)
-            '''
-    con.execute(sql,[up_ime,kodirajGeslo(geslo)])
+    if not aliVBazi(up_ime):
+        sql =   '''
+                 insert into uporabnik
+                 (up_ime,geslo)
+                 values (?,?)
+                '''
+        con.execute(sql,[up_ime,kodirajGeslo(geslo)])
+        con.commit()
+
+def dodaj_komentar(vsebina, uporabnik, igra):
+    sql = '''INSERT INTO komentar (vsebina, uporabnik, igra, datum)
+           VALUES (?,?,?, DATE('now'))'''
+    con.execute(sql, [vsebina, uporabnik, igra])
     con.commit()
-
-

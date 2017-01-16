@@ -1,27 +1,52 @@
 % rebase('osnova.tpl')
 
 
+<html>
+<head>
+<style>
+body   {
+	background-image: url("https://duelyst.com/img/game-action-bg.jpg");
+	}
+</style>
+</head>
+</html>
+
+	   <div class="card-panel teal lighten-2">
+			 <div class="right-align">
+			<html>
+			<body>
+			<img src="http://image.flaticon.com/teams/1-freepik.jpg" style="width:100px;height:100px;">
+			</body>
+			</html>
+			 </div>
+	   <h4 class="center-align">Računalniške igre</h4>
+	   </div>
+
 
 <div class="row">
     <div class="col s6">
         <table class="highlight">
       <div class="row">
         <div class="col s12">
+			% if up_id is None:
+			<form action = '/' method = 'POST'>
           <div class="card">
             <div class="card-content text">
 			<i class="material-icons right">perm_identity</i> <span class="card-title">Log in</span>
               <p><label class="active" for="up_ime">Uporabniško ime</label>
-			  <input value="" id="up_ime" type="text" class="validate">
+			  <input value="" name="up_ime" type="text" class="validate">
 			  <label class="active" for="geslo">Geslo</label>
-			  <input value="" id="geslo" type="text" class="validate">
+			  <input value="" name="geslo" type="text" class="validate">
 			  
       </p>
             </div>
             <div class="card-action">
-              <a href="#">VPIS</a>
-			  <a href="#">REGISTRACIJA</a>
+              <button type = 'submit' name='gumb' value='vpis'>VPIS</button>
+			  <button type = 'submit' name='gumb' value='registracija'>REGISTRACIJA</button>
+			 % end
             </div>
           </div>
+   	 </form>
         </div>
       </div>
 
@@ -49,26 +74,29 @@
         </table>
     </div>
 	
-    <div class="col s6">
-        <table class="highlight">
+    <div class="col s5">
+        <table class="striped">
             <thead>
                 <tr>
-                    <th>Top 10</th>
+				     <th>
+						<h4 class="center-align">Top 10</h4>
+					</th>
 				</tr>
             </thead>
 			<tbody>
 			
+
 		%for igra in igre:
                 <tr>
                     <td>
 			 <a href="/igra/{{igra['id']}}/">
-                       
-                        {{igra['ime']}} 
-                        </a>
+                        <span class="purple-text text-purple-2">
+							<h6 class="center-align">{{igra['ime']}} </h6>
+						</span>
+					</a>
                     </td>
                 </tr>
-                %end		
-			      
+                %end	
                
             </tbody>
         </table>
