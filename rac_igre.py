@@ -8,7 +8,8 @@ sess.set("up_id", None)
 @post('/')
 def prijavarequest():
     if request.forms.gumb == 'registracija':
-        pass#dodajuporabnika!
+        dodaj_uporabnik(request.forms.up_ime, request.forms.geslo)
+        redirect('/')
     else:
         up_ime = request.forms.up_ime
         geslo = request.forms.geslo
@@ -67,6 +68,13 @@ def vec_o_igri(id_igre):
         komentarji = komentarjiIgre(id_igre)#dodal, komentar, datum
 
     )
+@route('/dodaj_igro')
+def dodaj_igro():
+    return template(
+        'dodaj_igro',
+        zvrsti = seznam_zvrsti(),
+        platforme = seznam_platform()
+        )
 
 @route('/dodajKomentar')
 def dodajKomentar():

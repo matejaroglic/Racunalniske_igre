@@ -29,20 +29,26 @@ body   {
         <div class="col s12">
 			% if up_id is None:
 			<form action = '/' method = 'POST'>
-          <div class="card">
+            <div class="card">
             <div class="card-content text">
 			<i class="material-icons right">perm_identity</i> <span class="card-title">Log in</span>
-              <p><label class="active" for="up_ime">Uporabniško ime</label>
-			  <input value="" name="up_ime" type="text" class="validate">
-			  <label class="active" for="geslo">Geslo</label>
-			  <input value="" name="geslo" type="text" class="validate">
+            <p><label class="active" for="up_ime">Uporabniško ime</label>
+			<input value="" name="up_ime" type="text" class="validate">
+			<label class="active" for="geslo">Geslo</label>
+			<input value="" name="geslo" type="text" class="validate">
 			  
-      </p>
-            </div>
-            <div class="card-action">
-              <button type = 'submit' name='gumb' value='vpis'>VPIS</button>
-			  <button type = 'submit' name='gumb' value='registracija'>REGISTRACIJA</button>
-			 % end
+			</p>
+			</div>
+			<div class="card-action">
+            <button type = 'submit' name='gumb' value='vpis'>VPIS</button>
+			<button type = 'submit' name='gumb' value='registracija'>REGISTRACIJA</button>
+			  
+		% else: 
+			 
+			<a href="/dodaj_igro">
+			<img src="https://s27.postimg.org/ksmj4ypfn/dodaj_Igro.jpg" alt="dodajIgro" >
+			</a> 
+		% end
             </div>
           </div>
    	 </form>

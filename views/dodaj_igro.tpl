@@ -16,12 +16,12 @@
 			<input value="" id="zaloznik" type="text" class="validate">
 			<label class="active" for="platforme">Platforme:</label>
 			%for plat in platforme:
-			<input type="checkbox" name="platforme" value="{{plat}}" checked>{{plat}}<br>
+			<input type="checkbox" name="platforme" value="{{plat}}" checked>{{plat['katera']}}<br>
 			%end
 			<br>
-			<label class="active" for="zalozniki">Zalozniki:</label>
-			%for zaloznik in zalozniki:
-			<input type="checkbox" name="zalozniki" value="{{zaloznik}}" checked>{{zaloznik}}<br>
+			<label class="active" for="zalozniki">Zvrsti:</label>
+			%for zvrst in zvrsti:
+			<input type="checkbox" name="zvrsti" value="{{zvrst}}" checked>{{zvrst['ime']}}<br>
 			%end
 			
 			
