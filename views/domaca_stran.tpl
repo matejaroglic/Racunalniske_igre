@@ -1,5 +1,28 @@
 % rebase('osnova.tpl')
 
+
+<html>
+<head>
+<style>
+body   {
+	background-image: url("https://pixabay.com/get/ef3db60c2af61c22d2524518a3484491e374e7d104b0154991f5c17fafebb5/cat-687322_1280.jpg");
+	}
+</style>
+</head>
+</html>
+
+	   <div class="card-panel teal lighten-2">
+			 <div class="right-align">
+			<html>
+			<body>
+			<img src="http://image.flaticon.com/teams/1-freepik.jpg" style="width:100px;height:100px;">
+			</body>
+			</html>
+			 </div>
+	   <h4 class="center-align">Računalniške igre</h4>
+	   </div>
+
+
 <div class="row">
     <div class="col s6">
         <table class="highlight">
@@ -47,26 +70,29 @@
         </table>
     </div>
 	
-    <div class="col s6">
-        <table class="highlight">
+    <div class="col s5">
+        <table class="striped">
             <thead>
                 <tr>
-                    <th>Top 10</th>
+				     <th>
+						<h4 class="center-align">Top 10</h4>
+					</th>
 				</tr>
             </thead>
 			<tbody>
 			
+
 		%for igra in igre:
                 <tr>
                     <td>
 			 <a href="/igra/{{igra['id']}}/">
-                       
-                        {{igra['ime']}} 
-                        </a>
+                        <span class="purple-text text-purple-2">
+							<h6 class="center-align">{{igra['ime']}} </h6>
+						</span>
+					</a>
                     </td>
                 </tr>
-                %end		
-			      
+                %end	
                
             </tbody>
         </table>
