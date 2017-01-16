@@ -4,34 +4,6 @@ import hashlib
 con = sqlite3.connect('racunalniske_igre.db')
 con.row_factory = sqlite3.Row
 
-def koda_gesla(geslo):
-    geslo = hashlib.md5(geslo.encode()).hexdigest()
-    return geslo
-
-def dodaj_uporabnika(up_ime,geslo):
-    sql =   '''
-             insert into uporabnik
-             (up_ime,geslo)
-             values (?,?)
-            '''
-    con.execute(sql,[up_ime,koda_gesla(geslo)])
-    con.commit()
-
-
-
-def prijava(upIme, geslo):
-    sql = '''
-        select geslo
-        from uporabnik
-        where up_ime = ?
-          and geslo = ?;
-          '''
-    pravo = con.execute(sql, [up_ime, koda_gesla(geslo)]).fetchone()
-    #ce je none ali ne
-    return pravo
-
-
-
 def seznam_podjetij():
     sql = '''
     SELECT id, ime
@@ -226,14 +198,3 @@ def dodaj_komentar(vsebina, uporabnik, igra):
            VALUES (?,?,?, DATE('now'))'''
     con.execute(sql, [vsebina, uporabnik, igra])
     con.commit()
-<<<<<<< HEAD
-=======
-
-def dodaj_komentar(vsebina, uporabnik, igra):
-    sql = '''INSERT INTO komentar (vsebina, uporabnik, igra)
-           VALUES (?,?,?)'''
-    con.execute(sql, [vsebina, uporabnik, igra])
-    con.commit()
-
-dodaj_komentar("Great game", 23, 10)
->>>>>>> 7d0c47359bd1996773e69c95fef7a6f63440c20a
