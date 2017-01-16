@@ -6,7 +6,6 @@
             <div class="card-content white-text">
               <span class="card-title">{{podatki['ime']}}</span>
 			  
-<<<<<<< HEAD
 			<div class="right-align">
 			<html>
 			<body>
@@ -14,16 +13,6 @@
 			</body>
 			</html>
 			 </div>
-=======
-			 <div class="right-align">
-			<html>
-			<body>
-			<img src="https://cdn.pixabay.com/photo/2016/03/03/22/56/birds-1235201_640.jpg" style="width:100px;height:100px;">
-			</body>
-			</html>
-			 </div>
-
->>>>>>> 7d0c47359bd1996773e69c95fef7a6f63440c20a
 			  
               <p>
 			  Leto izdaje : {{podatki['leto']}} <br>
