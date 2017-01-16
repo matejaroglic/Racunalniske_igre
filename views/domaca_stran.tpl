@@ -1,15 +1,10 @@
 % rebase('osnova.tpl')
 
-
 <html>
 <head>
 <style>
 body   {
-<<<<<<< HEAD
 	background-image: url("https://duelyst.com/img/game-action-bg.jpg");
-=======
-	background-image: url("https://pixabay.com/get/ef3db60c2af61c22d2524518a3484491e374e7d104b0154991f5c17fafebb5/cat-687322_1280.jpg");
->>>>>>> 7d0c47359bd1996773e69c95fef7a6f63440c20a
 	}
 </style>
 </head>
@@ -70,8 +65,8 @@ body   {
       <thead>
                 <tr>
                     <th>
-					<a href="/vse_igre" class="waves-effect waves-light btn"> <i class="material-icons right">view_list</i>VSE IGRE</a>
-					</th>
+			<a href="/vse_igre" class="waves-effect waves-light btn"> <i class="material-icons right">view_list</i>VSE IGRE</a>
+		   </th>
                 </tr>
       </thead>  
 	  
@@ -82,10 +77,10 @@ body   {
         <table class="striped">
             <thead>
                 <tr>
-				     <th>
-						<h4 class="center-align">Top 10</h4>
-					</th>
-				</tr>
+			<th>
+			    <h4 class="center-align">Top 10</h4>
+			</th>
+		</tr>
             </thead>
 			<tbody>
 			
@@ -95,9 +90,9 @@ body   {
                     <td>
 			 <a href="/igra/{{igra['id']}}/">
                         <span class="purple-text text-purple-2">
-							<h6 class="center-align">{{igra['ime']}} </h6>
-						</span>
-					</a>
+			<h6 class="center-align">{{igra['ime']}} </h6>
+			</span>
+			</a>
                     </td>
                 </tr>
                 %end	
