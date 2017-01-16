@@ -5,7 +5,11 @@
 <head>
 <style>
 body   {
+<<<<<<< HEAD
 	background-image: url("https://duelyst.com/img/game-action-bg.jpg");
+=======
+	background-image: url("https://pixabay.com/get/ef3db60c2af61c22d2524518a3484491e374e7d104b0154991f5c17fafebb5/cat-687322_1280.jpg");
+>>>>>>> 7d0c47359bd1996773e69c95fef7a6f63440c20a
 	}
 </style>
 </head>
