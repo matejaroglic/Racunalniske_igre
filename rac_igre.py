@@ -57,17 +57,28 @@ def domaca_stran():
 def pomoc():
     return 'Pojdi na stran...'
 
+
 @route('/igra/<id_igre:int>/')
 def vec_o_igri(id_igre):
     return template(
         'vec_o_igri',
+        id_igre = id_igre,
         podatki =podatkiOigri(id_igre),
         razvijalec = razvijalecIgra(id_igre),
         platforme=igraPlatforme(id_igre),
         zvrsti=igraZvrsti(id_igre),
         komentarji = komentarjiIgre(id_igre)#dodal, komentar, datum
-
     )
+
+@post('/igra/<id_igre:int>/')
+def komentar(id_igre):
+    print('POST igra')
+    if request.forms.komentar != None and sess.read('up_id') != None:
+        print('POST OK')
+        dodaj_komentar(request.forms.komentar, sess.read('up_id'), id_igre)
+    redirect('/igra/{}/'.format(id_igre))
+
+
 @route('/dodaj_igro')
 def dodaj_igro():
     return template(
@@ -75,6 +86,11 @@ def dodaj_igro():
         zvrsti = seznam_zvrsti(),
         platforme = seznam_platform()
         )
+
+@post('/dodaj_igro')
+def dodaj_igro_post():
+    print('test')
+    print(request.forms.getall("platforme"), request.forms.getall("zvrsti"))
 
 @route('/dodajKomentar')
 def dodajKomentar():

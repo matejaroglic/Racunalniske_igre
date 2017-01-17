@@ -35,7 +35,7 @@ body   {
             <p><label class="active" for="up_ime">Uporabniško ime</label>
 			<input value="" name="up_ime" type="text" class="validate">
 			<label class="active" for="geslo">Geslo</label>
-			<input value="" name="geslo" type="text" class="validate">
+			<input value="" name="geslo" type="password" class="validate">
 			  
 			</p>
 			</div>
@@ -56,25 +56,20 @@ body   {
       </div>
 
 			 <div class="row">
-		Išči igro po imenu, letu, uporabniku, založniku, razvijalcu, zvrsti ali platformi:
-        <div class="input-field col s6">
+		<p style="color:powderblue;">Išči igro po imenu, letu, uporabniku, založniku, razvijalcu, zvrsti ali platformi:</p>
+        <div class="input-field col s12">
 		  <form action="/iskanje/">
-			<input name="iskanje" type="text" class="validate">
+			<input name="iskanje" type="text" style="color:white" "class="validate">
 			<label for="iskanje">Vnesi:</label>
 			<button class="waves-effect waves-light btn"><i class="material-icons right">search</i>Išči</button>
+			<a href="/vse_igre" class="waves-effect waves-light btn"> <i class="material-icons right">view_list</i>VSE IGRE</a>
 		  </form>
         </div>
 		
       </div>
-	  <br>
-	  <br>
-      <thead>
-                <tr>
-                    <th>
-			<a href="/vse_igre" class="waves-effect waves-light btn"> <i class="material-icons right">view_list</i>VSE IGRE</a>
-		   </th>
-                </tr>
-      </thead>  
+
+			
+ 
 	  
         </table>
     </div>

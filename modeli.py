@@ -198,3 +198,16 @@ def dodaj_komentar(vsebina, uporabnik, igra):
            VALUES (?,?,?, DATE('now'))'''
     con.execute(sql, [vsebina, uporabnik, igra])
     con.commit()
+    
+def dodaj_igro(ime, leto, razvijalec, zaloznik, uporabnik, platforme, zvrsti):
+    sql ='''INSERT INTO igra (ime, leto, razvijalec, zaloznik, uporabnik, datum)
+           VALUES (?,?,?,?,?, DATE('now'))'''
+    cur = con.execute(sql, [ime, leto, razvijalec, zaloznik, uporabnik])
+    id = cur.lastrowid
+    sql2 = '''insert into platforma_igra (igra, platforma) VALUES (?, ?)'''
+    for pl in platforme:
+        con.execute(sql2, id, pl)
+    sql3 = '''insert into zvrst_igra (igra, zvrst) VALUES (?, ?)'''#id-ji!nekaj je verjetno treba joinati
+    for zv in zvrsti:
+        con.execute(sql3, id, zv)
+    con.commit()
