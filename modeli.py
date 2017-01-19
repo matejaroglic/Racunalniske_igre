@@ -4,12 +4,18 @@ import hashlib
 con = sqlite3.connect('racunalniske_igre.db')
 con.row_factory = sqlite3.Row
 
-def seznam_podjetij():
+def najdi_podjetje(ime):
     sql = '''
-    SELECT id, ime
-    FROM podjetja order by id
+    SELECT id
+    FROM podjetja
+    WHERE ime = ?
     '''
-    return list(con.execute(sql))
+    id = con.execute(sql, [ime]).fetchone()
+    if id is None:
+        sql = '''insert into podjetja ime values (?)'''
+        id = con.execute(sql, [ime]).lastrowid
+        con.commit()
+    return id
 
 def seznam_uporabnikov():
     sql = '''
@@ -200,14 +206,19 @@ def dodaj_komentar(vsebina, uporabnik, igra):
     con.commit()
     
 def dodaj_igro(ime, leto, razvijalec, zaloznik, uporabnik, platforme, zvrsti):
+    zid = najdi_podjetje(zaloznik)
+    rid = najdi_podjetje(razvijalec)
+        
+    
     sql ='''INSERT INTO igra (ime, leto, razvijalec, zaloznik, uporabnik, datum)
-           VALUES (?,?,?,?,?, DATE('now'))'''
-    cur = con.execute(sql, [ime, leto, razvijalec, zaloznik, uporabnik])
+       VALUES (?,?,?,?,?, DATE('now'))'''
+    
+    cur = con.execute(sql, [ime, leto, rid, zid, uporabnik])
     id = cur.lastrowid
     sql2 = '''insert into platforma_igra (igra, platforma) VALUES (?, ?)'''
     for pl in platforme:
         con.execute(sql2, id, pl)
-    sql3 = '''insert into zvrst_igra (igra, zvrst) VALUES (?, ?)'''#id-ji!nekaj je verjetno treba joinati
+    sql3 = '''insert into zvrst_igra (igra, zvrst) VALUES (?, ?)'''
     for zv in zvrsti:
         con.execute(sql3, id, zv)
     con.commit()

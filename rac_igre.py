@@ -63,7 +63,7 @@ def vec_o_igri(id_igre):
     return template(
         'vec_o_igri',
         id_igre = id_igre,
-        podatki =podatkiOigri(id_igre),
+        podatki = podatkiOigri(id_igre),
         razvijalec = razvijalecIgra(id_igre),
         platforme=igraPlatforme(id_igre),
         zvrsti=igraZvrsti(id_igre),
@@ -83,20 +83,20 @@ def komentar(id_igre):
 def dodaj_igro():
     return template(
         'dodaj_igro',
-        zvrsti = seznam_zvrsti(),
-        platforme = seznam_platform()
+        zvrsti = seznam#zvrsti(),#
+        platforme = seznam#platform(),#preveri checkboxe
+        ime = request.forms.ime,
+        razvijalec = request.forms.razvijalec,
+        zaloznik = request.forms.zaloznik,
+        uporabnik = sess.read('up_id')
         )
 
 @post('/dodaj_igro')
 def dodaj_igro_post():
     print('test')
-    print(request.forms.getall("platforme"), request.forms.getall("zvrsti"))
+    #dodaj_igro()
+    print(request.forms.getall("platforme"), request.forms.getall("zvrsti"))#checkbox
 
-@route('/dodajKomentar')
-def dodajKomentar():
-    return template(
-        'dodajKomentar'
-        )
 
 #@post('dodajKomentar')
 #def ...
