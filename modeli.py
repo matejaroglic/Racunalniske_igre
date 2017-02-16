@@ -10,6 +10,7 @@ def najdi_podjetje(ime):
     FROM podjetja
     WHERE ime = ?
     '''
+    print(ime)
     id = con.execute(sql, [ime]).fetchone()
     if id is None:
         sql = '''insert into podjetja ime values (?)'''
@@ -205,10 +206,12 @@ def dodaj_komentar(vsebina, uporabnik, igra):
     con.execute(sql, [vsebina, uporabnik, igra])
     con.commit()
     
-def dodaj_igro(ime, leto, razvijalec, zaloznik, uporabnik, platforme, zvrsti):
+def dodaj_igro_v_bazo(ime, leto, razvijalec, zaloznik, uporabnik, platforme, zvrsti):
+    print(zaloznik)
+    print(razvijalec)
     zid = najdi_podjetje(zaloznik)
     rid = najdi_podjetje(razvijalec)
-        
+    print('test dodajanje')    
     
     sql ='''INSERT INTO igra (ime, leto, razvijalec, zaloznik, uporabnik, datum)
        VALUES (?,?,?,?,?, DATE('now'))'''

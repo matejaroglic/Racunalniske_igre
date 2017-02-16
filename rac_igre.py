@@ -83,18 +83,22 @@ def komentar(id_igre):
 def dodaj_igro():
     return template(
         'dodaj_igro',
-        zvrsti = seznam#zvrsti(),#
-        platforme = seznam#platform(),#preveri checkboxe
-        ime = request.forms.ime,
-        razvijalec = request.forms.razvijalec,
-        zaloznik = request.forms.zaloznik,
-        uporabnik = sess.read('up_id')
+        zvrsti = seznam_zvrsti(),#zvrsti(),#
+        platforme = seznam_platform()#platform(),#preveri checkboxe
         )
 
 @post('/dodaj_igro')
 def dodaj_igro_post():
     print('test')
+    ime = request.forms.ime,
+    leto = request.forms.leto,
+    razvijalec = request.forms.razvijalec,
+    zaloznik = request.forms.zaloznik,
+    uporabnik = sess.read('up_id')
+    platforme = request.forms.getall("platforme")
+    zvrsti = request.forms.getall("zvrsti")
     #dodaj_igro()
+    dodaj_igro_v_bazo(ime, leto, razvijalec, zaloznik, uporabnik, platforme, zvrsti) 
     print(request.forms.getall("platforme"), request.forms.getall("zvrsti"))#checkbox
 
 
