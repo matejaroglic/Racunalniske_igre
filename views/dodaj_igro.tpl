@@ -7,22 +7,22 @@
               <span class="card-title">Dodajanje igre</span>
 			  <form action = 'dodaj_igro' method = 'POST'>
 			  <label class="active" for="ime_igre">Ime igre:</label>
-			<input value="" id="ime_igre" type="text" class="validate">
+			<input value="" name="ime_igre" type="text" class="validate">
 			<label class="active" for="leto">Leto:</label>
-			<input value="" id="leto" type="text" class="validate">
+			<input value="" name="leto" type="text" class="validate">
 			<label class="active" for="razvijalec">Razvijalec:</label>
-			<input value="" id="razvijalec" type="text" class="validate">
+			<input value="" name="razvijalec" type="text" class="validate">
 			<label class="active" for="zaloznik">Založnik:</label>
-			<input value="" id="zaloznik" type="text" class="validate">
+			<input value="" name="zaloznik" type="text" class="validate">
 			Platforme:<br/>
 			%for plat in platforme:
-			<input type="checkbox" name="platforme" value="{{plat['id']}}"  id="plat{{plat['id']}}" checked>
+			<input type="checkbox" name="platforme" value="{{plat['id']}}"  id="plat{{plat['id']}}" >
 			<label for="plat{{plat['id']}}">{{plat['katera']}}</label><br>
 			%end
 			<br>
 			Zvrsti:<br/>
 			%for zvrst in zvrsti:
-			<input type="checkbox" name="zvrsti" value="{{zvrst['id']}}" id="zvrst{{zvrst['id']}}" checked>
+			<input type="checkbox" name="zvrsti" value="{{zvrst['id']}}" id="zvrst{{zvrst['id']}}" >
 			<label for="zvrst{{zvrst['id']}}">{{zvrst['ime']}}</label><br>
 			%end
 			
