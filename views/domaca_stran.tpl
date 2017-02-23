@@ -19,11 +19,16 @@ body   {
 			</body>
 			</html>
 		</div>
-	    <div class="col s8">
+	    <div class="col s9">
 			<h3 class="center-align">Računalniške igre</h3>
 		</div>
-		<div class="col s3">
-			<span class="flow-text">6-columns (offset-by-6)</span></div>
+		<div class="col s2">
+			% if up_id is not None:
+			<p style="color:powderblue;">ime Uprorabnika</p>
+			
+			
+			%end
+		 </div>
 		</div>
 	  </div>
 
@@ -70,13 +75,14 @@ body   {
 			<button class="waves-effect waves-light btn"><i class="material-icons right">search</i>Išči</button>
 			<a href="/vse_igre" class="waves-effect waves-light btn"> <i class="material-icons right">view_list</i>VSE IGRE</a>
 		  </form>
+		  % if up_id is not None:
+		  <a class="waves-effect waves-light btn"><i class="material-icons right">perm_identity</i>ODJAVA</a>
+		  %end
         </div>
 		
       </div>
 
 			
- 
-	  
         </table>
     </div>
 	

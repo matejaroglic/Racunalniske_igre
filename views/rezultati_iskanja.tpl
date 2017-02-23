@@ -1,6 +1,9 @@
 %rebase('osnova.tpl')
 
- <table class="highlight">
+
+<div class="row">
+ <div class="col s5">
+  <table class="striped">
             <thead>
                 <tr>
                     <th>Rezultati iskanja:</th>
@@ -22,3 +25,5 @@
                
             </tbody>
         </table>
+	</div>  
+</div> 

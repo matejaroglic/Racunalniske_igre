@@ -26,6 +26,13 @@ def seznam_uporabnikov():
           '''
     return list(con.execute(sql))
 
+def vrni_imeUp(idUp):
+    '''vrne ime uporabnika, ki ima id enak idUp'''
+    sql = '''select up_ime from uporabnik where id = ?'''
+    return con.execute(sql, [idUp]).fetchone()["up_ime"]
+
+
+
 def sez_iger():
     sql= '''
     SELECT id, ime, leto, uporabnik, zaloznik, razvijalec
@@ -40,10 +47,6 @@ def seznam_platform():
 def seznam_zvrsti():
     sql = '''SELECT id, ime FROM zvrst'''
     return list(con.execute(sql))
-
-def povprecna_ocena(igra):
-    sql = '''SELECT AVG(koliko) AS povp FROM ocena WHERE igra = ?'''
-    return con.execute(sql, [igra]).fetchone()["povp"]
 
 def topDeset():
     '''vrne prvih 10 iger z najboljšo povprečno oceno'''
@@ -166,6 +169,12 @@ def razvijalecIgra(igra):
     return con.execute(sql, [igra]).fetchone()
 
 
+def povprecna_ocena(igra):
+    sql = '''SELECT AVG(koliko) AS povp FROM ocena WHERE igra = ?'''
+    return round(con.execute(sql, [igra]).fetchone()["povp"],2)
+
+print(povprecna_ocena(20))
+
 ##Od tu naprej
 def kodirajGeslo(geslo):
     '''vrne zakodirano geslo'''
@@ -208,14 +217,8 @@ def dodaj_komentar(vsebina, uporabnik, igra):
     con.commit()
     
 def dodaj_igro_v_bazo(ime, leto, razvijalec, zaloznik, uporabnik, platforme, zvrsti):
-    print(zaloznik)
-    print(razvijalec)
-    print(ime)
-    print(uporabnik)
-    print(leto)
     zid = najdi_podjetje(zaloznik)
-    rid = najdi_podjetje(razvijalec)
-    print('test dodajanje')    
+    rid = najdi_podjetje(razvijalec) 
     
     sql ='''INSERT INTO igra (ime, leto, razvijalec, zaloznik, uporabnik)
        VALUES (?,?,?,?,?)'''

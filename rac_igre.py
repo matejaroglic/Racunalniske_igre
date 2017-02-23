@@ -13,7 +13,6 @@ def prijavarequest():
     else:
         up_ime = request.forms.up_ime
         geslo = request.forms.geslo
-        print(up_ime, geslo)
         up_id = prijava(up_ime, geslo)
         if up_id is None:
             redirect('/pomoc/')
@@ -36,14 +35,8 @@ def dodajuporabnika():
     pas = request.forms.geslo
     if not aliVBazi(up):
         dodaj_uporabnika(up,pas)
-        
-            
     return redirect('/dodaj_uporabnika/')
     
-##@route('/prijava/')
-##def prijava():
-##    return template('prijava')
-
 
 @route('/')
 def domaca_stran():
