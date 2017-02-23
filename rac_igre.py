@@ -87,10 +87,10 @@ def dodaj_igro():
 
 @post('/dodaj_igro')
 def dodaj_igro_post():
-    ime = request.forms.ime_igre,
-    leto = request.forms.leto,
-    razvijalec = request.forms.razvijalec,
-    zaloznik = request.forms.zaloznik,
+    ime = request.forms.ime_igre
+    leto = request.forms.leto
+    razvijalec = request.forms.razvijalec
+    zaloznik = request.forms.zaloznik
     uporabnik = sess.read('up_id')
     platforme = request.forms.getall("platforme")
     zvrsti = request.forms.getall("zvrsti")

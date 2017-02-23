@@ -16,7 +16,8 @@ def najdi_podjetje(ime):
         sql = '''insert into podjetja (ime) values (?)'''
         id = con.execute(sql, [ime]).lastrowid
         con.commit()
-    return id
+        return id
+    return id[0]
 
 def seznam_uporabnikov():
     sql = '''
@@ -223,8 +224,8 @@ def dodaj_igro_v_bazo(ime, leto, razvijalec, zaloznik, uporabnik, platforme, zvr
     id = cur.lastrowid
     sql2 = '''insert into platforma_igra (igra, platforma) VALUES (?, ?)'''
     for pl in platforme:
-        con.execute(sql2, id, pl)
+        con.execute(sql2, [id, pl])
     sql3 = '''insert into zvrst_igra (igra, zvrst) VALUES (?, ?)'''
     for zv in zvrsti:
-        con.execute(sql3, id, zv)
+        con.execute(sql3, [id, zv])
     con.commit()
