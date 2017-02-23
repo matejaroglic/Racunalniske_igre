@@ -10,16 +10,22 @@ body   {
 </head>
 </html>
 
-	   <div class="card-panel teal lighten-2">
-			 <div class="right-align">
+	<div class="card-panel teal lighten-2">  
+	  <div class="row">
+		<div class="col s1">
 			<html>
 			<body>
 			<img src="http://image.flaticon.com/teams/1-freepik.jpg" style="width:100px;height:100px;">
 			</body>
 			</html>
-			 </div>
-	   <h4 class="center-align">Računalniške igre</h4>
-	   </div>
+		</div>
+	    <div class="col s8">
+			<h3 class="center-align">Računalniške igre</h3>
+		</div>
+		<div class="col s3">
+			<span class="flow-text">6-columns (offset-by-6)</span></div>
+		</div>
+	  </div>
 
 
 <div class="row">
