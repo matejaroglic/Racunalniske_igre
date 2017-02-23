@@ -72,9 +72,7 @@ def vec_o_igri(id_igre):
 
 @post('/igra/<id_igre:int>/')
 def komentar(id_igre):
-    print('POST igra')
     if request.forms.komentar != None and sess.read('up_id') != None:
-        print('POST OK')
         dodaj_komentar(request.forms.komentar, sess.read('up_id'), id_igre)
     redirect('/igra/{}/'.format(id_igre))
 
@@ -89,17 +87,17 @@ def dodaj_igro():
 
 @post('/dodaj_igro')
 def dodaj_igro_post():
-    print('test')
-    ime = request.forms.ime,
-    leto = request.forms.leto,
-    razvijalec = request.forms.razvijalec,
-    zaloznik = request.forms.zaloznik,
+    ime = request.forms.ime_igre
+    leto = request.forms.leto
+    razvijalec = request.forms.razvijalec
+    zaloznik = request.forms.zaloznik
     uporabnik = sess.read('up_id')
     platforme = request.forms.getall("platforme")
     zvrsti = request.forms.getall("zvrsti")
     #dodaj_igro()
-    dodaj_igro_v_bazo(ime, leto, razvijalec, zaloznik, uporabnik, platforme, zvrsti) 
     print(request.forms.getall("platforme"), request.forms.getall("zvrsti"))#checkbox
+    dodaj_igro_v_bazo(ime, leto, razvijalec, zaloznik, uporabnik, platforme, zvrsti) 
+
 
 
 #@post('dodajKomentar')
