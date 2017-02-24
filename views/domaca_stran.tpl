@@ -24,9 +24,11 @@ body   {
 		</div>
 		<div class="col s2">
 			% if up_id is not None:
-			<p style="color:powderblue;">ime Uprorabnika</p>
-			
-			
+			<p style="color:powderblue;">Pozdravljen, {{upor_ime}}!</p><br><br>
+			<form action = '/' method = 'POST'>
+		  <button type = 'submit' name = 'gumb' value = 'odjava' "><i class="material-icons right">perm_identity</i>ODJAVA</button>  
+		  
+		  </form>
 			%end
 		 </div>
 		</div>
@@ -75,9 +77,6 @@ body   {
 			<button class="waves-effect waves-light btn"><i class="material-icons right">search</i>Išči</button>
 			<a href="/vse_igre" class="waves-effect waves-light btn"> <i class="material-icons right">view_list</i>VSE IGRE</a>
 		  </form>
-		  % if up_id is not None:
-		  <a class="waves-effect waves-light btn"><i class="material-icons right">perm_identity</i>ODJAVA</a>
-		  %end
         </div>
 		
       </div>

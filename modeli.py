@@ -29,7 +29,8 @@ def seznam_uporabnikov():
 def vrni_imeUp(idUp):
     '''vrne ime uporabnika, ki ima id enak idUp'''
     sql = '''select up_ime from uporabnik where id = ?'''
-    return con.execute(sql, [idUp]).fetchone()["up_ime"]
+    if idUp is not None:
+        return con.execute(sql, [idUp]).fetchone()["up_ime"]
 
 
 
@@ -216,6 +217,13 @@ def dodaj_komentar(vsebina, uporabnik, igra):
     con.execute(sql, [vsebina, uporabnik, igra])
     con.commit()
     
+def dodaj_oceno(igra, uporabnik, koliko):
+    sql = '''INSERT INTO ocena (igra, uporabnik, koliko)
+           VALUES (?,?,?)'''
+    con.execute(sql, [igra, uporabnik, koliko])
+    con.commit()
+
+    
 def dodaj_igro_v_bazo(ime, leto, razvijalec, zaloznik, uporabnik, platforme, zvrsti):
     zid = najdi_podjetje(zaloznik)
     rid = najdi_podjetje(razvijalec) 
@@ -232,3 +240,4 @@ def dodaj_igro_v_bazo(ime, leto, razvijalec, zaloznik, uporabnik, platforme, zvr
     for zv in zvrsti:
         con.execute(sql3, [id, zv])
     con.commit()
+

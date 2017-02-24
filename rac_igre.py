@@ -10,7 +10,7 @@ def prijavarequest():
     if request.forms.gumb == 'registracija':
         dodaj_uporabnik(request.forms.up_ime, request.forms.geslo)
         redirect('/')
-    else:
+    if request.forms.gumb == 'vpis':
         up_ime = request.forms.up_ime
         geslo = request.forms.geslo
         up_id = prijava(up_ime, geslo)
@@ -19,7 +19,16 @@ def prijavarequest():
         else:
             sess.set("up_id", up_id)
             redirect('/')
-
+    if request.forms.gumb == 'odjava':
+        sess.set("up_id", None)
+        redirect('/')
+        
+    
+##@post('/')
+##def odjavarequest():
+##    if request.forms.gumb == 'odjava':
+##        sess.set("up_id", None)
+##        redirect('/')
 
 @route('/pomoc/')
 def pomoc():
@@ -43,7 +52,8 @@ def domaca_stran():
     return template(
         'domaca_stran',
         igre = topDeset(),
-        up_id = sess.read('up_id')
+        up_id = sess.read('up_id'),
+        upor_ime = vrni_imeUp(sess.read("up_id"))
     )
 
 @route('/vec/')
@@ -60,13 +70,20 @@ def vec_o_igri(id_igre):
         razvijalec = razvijalecIgra(id_igre),
         platforme=igraPlatforme(id_igre),
         zvrsti=igraZvrsti(id_igre),
-        komentarji = komentarjiIgre(id_igre)#dodal, komentar, datum
-    )
+        komentarji = komentarjiIgre(id_igre),
+        povpOcena = povprecna_ocena(id_igre)
+            )
 
 @post('/igra/<id_igre:int>/')
 def komentar(id_igre):
     if request.forms.komentar != None and sess.read('up_id') != None:
         dodaj_komentar(request.forms.komentar, sess.read('up_id'), id_igre)
+    redirect('/igra/{}/'.format(id_igre))
+
+@post('/igra/<id_igre:int>/')
+def ocena(id_igre):
+    if request.forms.izbira != None and sess.read('up_id') != None:
+        dodaj_oceno(id_igre, sess.read('up_id'), request.forms.izbira)
     redirect('/igra/{}/'.format(id_igre))
 
 

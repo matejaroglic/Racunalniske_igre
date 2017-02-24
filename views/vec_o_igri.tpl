@@ -15,16 +15,19 @@
 			</div>
 			
 			<div class="col s5">
-				<div class="chip">Povprečna ocena: 4.34</div>
+				<div class="chip">Povprečna ocena: {{povpOcena}}</div>
+				<form action = '/igra/{{id_igre}}/' method = 'POST'>
 				<ul id="dropdown2" class="dropdown-content">
-				<li><a href="#!">1</a></li>
-				<li><a href="#!">2</a></li>
-				<li><a href="#!">3</a></li>
-				<li><a href="#!">4</a></li>
-				<li><a href="#!">5</a></li>
+				<li align = 'center'><button value = 1 name = 'izbira' type='submit'>1</button></li>
+				<li><select value = 2 name = 'izbira' type = 'submit'>2</select></li>
+				<li><a value = 3 name = 'izbira' type = 'submit'>3</a></li>
+				<li><a value = 4 name = 'izbira' type = 'submit'>4</a></li>
+				<li><a value = 5 name = 'izbira' type = 'submit'>5</a></li>
+				
 				</ul>
 				<a class="btn dropdown-button" href="#!" data-activates="dropdown2">OCENI IGRO<i class="mdi-navigation-arrow-drop-down right"></i></a>
 			</div>  
+			</form>
 			  
 			<div class="col s2">
 			<html>
