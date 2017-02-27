@@ -32,7 +32,7 @@ def vrni_imeUp(idUp):
     if idUp is not None:
         return con.execute(sql, [idUp]).fetchone()["up_ime"]
 
-
+print(vrni_imeUp(104))
 
 def sez_iger():
     sql= '''
@@ -172,9 +172,11 @@ def razvijalecIgra(igra):
 
 def povprecna_ocena(igra):
     sql = '''SELECT AVG(koliko) AS povp FROM ocena WHERE igra = ?'''
-    return round(con.execute(sql, [igra]).fetchone()["povp"],2)
+    if con.execute(sql, [igra]).fetchone()["povp"] is not None:
+        return round(con.execute(sql, [igra]).fetchone()["povp"],2)
+    else:
+        return "Igra še nima ocene."
 
-print(povprecna_ocena(20))
 
 ##Od tu naprej
 def kodirajGeslo(geslo):
@@ -198,6 +200,16 @@ def aliVBazi(up_ime):
     if con.execute(sql, [up_ime]).fetchone():
         return True
     return False
+
+def aliOcenil(upId, igraId):
+    '''vrne 1, če je uporabnik že ocenil igro in 0, če je ni'''
+    sql = '''SELECT count(*)
+          FROM ocena
+          WHERE uporabnik = ? AND 
+          igra = ?'''
+    return con.execute(sql,[upId,igraId]).fetchone()[0]
+    
+print(aliOcenil(14, 63))
 
 ###Dodajanje v bazo
 

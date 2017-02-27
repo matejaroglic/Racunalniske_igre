@@ -22,13 +22,6 @@ def prijavarequest():
     if request.forms.gumb == 'odjava':
         sess.set("up_id", None)
         redirect('/')
-        
-    
-##@post('/')
-##def odjavarequest():
-##    if request.forms.gumb == 'odjava':
-##        sess.set("up_id", None)
-##        redirect('/')
 
 @route('/pomoc/')
 def pomoc():
@@ -65,6 +58,8 @@ def pomoc():
 def vec_o_igri(id_igre):
     return template(
         'vec_o_igri',
+        ocenil = aliOcenil(sess.read('up_id'),id_igre),
+        up = sess.read('up_id'),
         id_igre = id_igre,
         podatki = podatkiOigri(id_igre),
         razvijalec = razvijalecIgra(id_igre),
@@ -91,8 +86,8 @@ def ocena(id_igre):
 def dodaj_igro():
     return template(
         'dodaj_igro',
-        zvrsti = seznam_zvrsti(),#zvrsti(),#
-        platforme = seznam_platform()#platform(),#preveri checkboxe
+        zvrsti = seznam_zvrsti(),
+        platforme = seznam_platform()
         )
 
 @post('/dodaj_igro')
@@ -104,15 +99,9 @@ def dodaj_igro_post():
     uporabnik = sess.read('up_id')
     platforme = request.forms.getall("platforme")
     zvrsti = request.forms.getall("zvrsti")
-    #dodaj_igro()
-    print(request.forms.getall("platforme"), request.forms.getall("zvrsti"))#checkbox
     dodaj_igro_v_bazo(ime, leto, razvijalec, zaloznik, uporabnik, platforme, zvrsti) 
 
 
-
-#@post('dodajKomentar')
-#def ...
-#    modeli.dodajKomentar(idIgre, vsebina, sess.read('up_id'))
 
 @route('/iskanje/')
 def rezultati_iskanja():

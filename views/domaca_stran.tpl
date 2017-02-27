@@ -23,11 +23,10 @@ body   {
 			<h3 class="center-align">Računalniške igre</h3>
 		</div>
 		<div class="col s2">
-			% if up_id is not None:
+			%if up_id is not None:
 			<p style="color:powderblue;">Pozdravljen, {{upor_ime}}!</p><br><br>
 			<form action = '/' method = 'POST'>
 		  <button type = 'submit' name = 'gumb' value = 'odjava' "><i class="material-icons right">perm_identity</i>ODJAVA</button>  
-		  
 		  </form>
 			%end
 		 </div>

@@ -1,6 +1,7 @@
 %rebase('osnova.tpl')
 
-
+	<html>
+	<body>
           <div class="card blue-grey darken-2">
             <div class="card-content white-text">
               <span class="card-title">{{podatki['ime']}}</span>
@@ -16,25 +17,24 @@
 			
 			<div class="col s5">
 				<div class="chip">Povprečna ocena: {{povpOcena}}</div>
+				
+				% if ocenil == 0:
 				<form action = '/igra/{{id_igre}}/' method = 'POST'>
 				<ul id="dropdown2" class="dropdown-content">
-				<li align = 'center'><button value = 1 name = 'izbira' type='submit'>1</button></li>
-				<li><select value = 2 name = 'izbira' type = 'submit'>2</select></li>
-				<li><a value = 3 name = 'izbira' type = 'submit'>3</a></li>
-				<li><a value = 4 name = 'izbira' type = 'submit'>4</a></li>
-				<li><a value = 5 name = 'izbira' type = 'submit'>5</a></li>
-				
+				<li style="text-align:center;"><button value = 1 name = 'izbira' type='submit' style="border:none;background-color: Transparent;padding-top:15px;" >1</button></li>
+				<li style="text-align:center;"><button value = 2 name = 'izbira' type='submit' style="border:none;background-color: Transparent;padding-top:15px;" >2</button></li>
+				<li style="text-align:center;"><button value = 3 name = 'izbira' type='submit' style="border:none;background-color: Transparent;padding-top:15px;" >3</button></li>
+				<li style="text-align:center;"><button value = 4 name = 'izbira' type='submit' style="border:none;background-color: Transparent;padding-top:15px;" >4</button></li>
+				<li style="text-align:center;"><button value = 5 name = 'izbira' type='submit' style="border:none;background-color: Transparent;padding-top:15px;" >5</button></li>
 				</ul>
 				<a class="btn dropdown-button" href="#!" data-activates="dropdown2">OCENI IGRO<i class="mdi-navigation-arrow-drop-down right"></i></a>
+				</form>
+				%end
 			</div>  
-			</form>
+				
 			  
 			<div class="col s2">
-			<html>
-			<body>
 			<img src="https://cdn2.iconfinder.com/data/icons/pack1-baco-flurry-icons-style/512/Game_Center.png" style="width:100px;height:100px;">
-			</body>
-			</html>
 			 </div>
 			  
 
@@ -61,7 +61,8 @@
  
 
 
-  
+
+	%if up is not None:
        <div class="row">
         <div class="col s12 m6">
 		<form action = '/igra/{{id_igre}}/' method = 'POST'>
@@ -78,6 +79,8 @@
 		  </form>
         </div>
       </div>
+	 %end
+
 
   <div class="row">
     <div class="col s12"><p>Komentarji</p></div> 
@@ -92,5 +95,7 @@
 	%end
  
 <ul class="collection">
-
 </ul>
+
+</body>
+</html>
