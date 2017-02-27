@@ -18,7 +18,7 @@
 			<div class="col s5">
 				<div class="chip">Povprečna ocena: {{povpOcena}}</div>
 				
-				% if ocenil == 0:
+				% if ocenil == 0 and up is not None:
 				<form action = '/igra/{{id_igre}}/' method = 'POST'>
 				<ul id="dropdown2" class="dropdown-content">
 				<li style="text-align:center;"><button value = 1 name = 'izbira' type='submit' style="border:none;background-color: Transparent;padding-top:15px;" >1</button></li>
