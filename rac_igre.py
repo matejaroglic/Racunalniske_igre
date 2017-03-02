@@ -70,17 +70,12 @@ def vec_o_igri(id_igre):
             )
 
 @post('/igra/<id_igre:int>/')
-def komentar(id_igre):
-    if request.forms.komentar != None and sess.read('up_id') != None:
+def ocena_kom(id_igre):
+    if request.forms.izbira != "" and sess.read('up_id') != None:
+        dodaj_oceno(id_igre, sess.read('up_id'), request.forms.izbira)
+    if request.forms.komentar != "" and sess.read('up_id') != None:
         dodaj_komentar(request.forms.komentar, sess.read('up_id'), id_igre)
     redirect('/igra/{}/'.format(id_igre))
-
-@post('/igra/<id_igre:int>/')
-def ocena(id_igre):
-    if request.forms.izbira != None and sess.read('up_id') != None:
-        dodaj_oceno(id_igre, sess.read('up_id'), request.forms.izbira)
-    redirect('/igra/{}/'.format(id_igre))
-
 
 @route('/dodaj_igro')
 def dodaj_igro():
@@ -99,7 +94,8 @@ def dodaj_igro_post():
     uporabnik = sess.read('up_id')
     platforme = request.forms.getall("platforme")
     zvrsti = request.forms.getall("zvrsti")
-    dodaj_igro_v_bazo(ime, leto, razvijalec, zaloznik, uporabnik, platforme, zvrsti) 
+    if ime != None and uporabnik != None and leto != None:
+        dodaj_igro_v_bazo(ime, leto, razvijalec, zaloznik, uporabnik, platforme, zvrsti) 
 
 
 

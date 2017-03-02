@@ -94,8 +94,10 @@
  </div>
 	%end
  
-<ul class="collection">
-</ul>
-
+<ul class="collection"></ul>
+<a href="/">Začetna stran</a>
+<br>
+<br>
+<br>
 </body>
 </html>

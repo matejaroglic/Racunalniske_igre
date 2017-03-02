@@ -7,7 +7,7 @@
               <span class="card-title">Dodajanje igre</span>
 			  <form action = 'dodaj_igro' method = 'POST'>
 			  <label class="active" for="ime_igre">Ime igre:</label>
-			<input value="" name="ime_igre" type="text" class="validate">
+			<input value="" name="ime_igre" type="text" class="validate" required="" aria-required="true">
 			<label class="active" for="leto">Leto:</label>
 			<input value="" name="leto" type="text" class="validate">
 			<label class="active" for="razvijalec">Razvijalec:</label>
@@ -26,8 +26,6 @@
 			<label for="zvrst{{zvrst['id']}}">{{zvrst['ime']}}</label><br>
 			%end
 			
-			
-
             </div>
             <div class="card-action">
               </a><button type = 'submit'>Dodaj!</button>
